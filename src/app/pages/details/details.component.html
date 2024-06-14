@@ -1,0 +1,32 @@
+<div *ngIf="!loading && id!==0 && character" class="w-100 d-flex flex-column justify-content-center">
+    <div class="mt-3 w-100 d-flex justify-content-center mb-3">
+        <img class="rounded-3 img-fluid" [src]="character.image" />
+        <div class="ms-3">
+            <h2 class="card-title name">{{character.name}}</h2>
+            <p class="poppins text-white">{{character.species}}{{character.type ? " - "+character.type: ''}}</p>
+            <p class="poppins text-white">{{character.status}}</p>
+            <p class="poppins text-white">Origin: {{character.origin.name}}</p>
+            <button mat-raised-button *ngIf="episode_ids.length && !loading_episodes && !episodes.length"
+                (click)="onEpisodesClick()">Carregar Episodios</button>
+        </div>
+    </div>
+    <div class="w-50 d-flex flex-column justify-content-center mb-3 episodes-content mx-auto"
+        *ngIf="character.episode.length && !loading_episodes && episodes.length">
+        <h2 class="card-title text-white mb-3">Episodios</h2>
+        <div class="d-flex flex-wrap justify-content-start align-items-stretch">
+            <div class="rounded mb-3 border-1 border-light mx-1 epicard p-4" *ngFor="let episode of episodes">
+                <p class="w-100 mb-0 poppins text-white">Name: {{episode.name}}</p>
+                <p class="w-100 mb-0 poppins text-white">Episode: {{episode.episode}}</p>
+                <p class="w-100 mb-0 poppins text-white">Air Date: {{episode.air_date | date}}</p>
+            </div>
+        </div>
+        <p class="w-100 text-center text-white" *ngIf="loading_episodes">Carregando...</p>
+    </div>
+
+</div>
+<p class="w-100 text-center text-white" *ngIf="loading">Carregando...</p>
+<div *ngIf="!character && !loading"
+    class="mt-3 mx-auto d-flex flex-column rounded bg-dark text-white justify-content-center align-items-center main-content no-content">
+    <h3>Personagem não encontrado</h3>
+    <p>Por favor, selecione outro personagem.</p>
+</div>

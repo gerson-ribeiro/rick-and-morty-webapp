@@ -1,0 +1,9 @@
+div.list-content {
+  width: 720px;
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+  div.list-content {
+    width: 100%;
+  }
+}

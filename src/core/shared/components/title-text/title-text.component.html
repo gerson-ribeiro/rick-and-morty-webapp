@@ -1,0 +1,10 @@
+<div class="w-100 mx-1 d-flex justify-content-between align-items-center">
+    <h1 class="page-title pt-2">{{title}}</h1>
+    <div class="form-group search-input" *ngIf="search_field != undefined">
+        <mat-form-field subscriptSizing="dynamic" class="w-100" appearance="outline">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput class="text-white" [(ngModel)]="search_field" (keyup)="onSearchChange()"
+                placeholder="Pesquisar">
+        </mat-form-field>
+    </div>
+</div>

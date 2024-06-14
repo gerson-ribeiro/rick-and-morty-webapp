@@ -1,0 +1,49 @@
+<mat-toolbar class="text-bg-dark">
+  <a [routerLink]="['/']" class="h-100">
+    <img src="/images/header-logo.png" alt="Rick and Morty" class="h-100 icon-img" />
+  </a>
+  <div *ngIf="path==='/' || path ==='/favorite'" class="nav-menu w-100">
+    <button mat-button [matMenuTriggerFor]="menu" class="border-1">
+      <mat-icon class="text-white me-0">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item [routerLink]="['/']" class="text-bg-white text-center align-items-center d-flex">
+        <mat-icon class="me-1" fontIcon="home"></mat-icon>
+        <p class="m-0 fw-bold">
+          Início
+        </p>
+      </a>
+      <a mat-menu-item [routerLink]="['/favorite']" class="text-bg-black text-center align-items-center d-flex">
+        <mat-icon class="me-2" fontIcon="favorite"></mat-icon>
+        <p class="m-0 d-flex align-items-center  fw-bold">Favoritos <span [class.bg-dark]="path =='/favorite'"
+            [class.bg-white]="path !='/favorite'" [class.text-dark]="path !='/favorite'"
+            [class.text-white]="path =='/favorite'"
+            class="counter-circle fw-bold ms-2 align-self-center bg-white rounded-circle text-dark">{{
+            counter
+            |
+            async}}</span>
+      </a>
+    </mat-menu>
+  </div>
+  <div *ngIf="path==='/' || path ==='/favorite'" class="nav-menu-md btn-group d-flex ms-auto" role="group">
+    <a [routerLink]="['/']" [class.btn-light]="path=='/'" [class.btn-dark]="path!='/'"
+      class="btn text-bg-white text-center align-items-center d-flex">
+      <mat-icon class="me-1" fontIcon="home"></mat-icon>
+      <p class="m-0 fw-bold">
+        Início
+      </p>
+    </a>
+    <a [routerLink]="['/favorite']" [class.btn-light]="path=='/favorite'" [class.btn-dark]="path!='/favorite'"
+      class="btn text-bg-black text-center align-items-center d-flex">
+      <mat-icon class="me-2" fontIcon="favorite"></mat-icon>
+      <p class="m-0 d-flex align-items-center  fw-bold">Favoritos <span [class.bg-dark]="path =='/favorite'"
+          [class.bg-white]="path !='/favorite'" [class.text-dark]="path !='/favorite'"
+          [class.text-white]="path =='/favorite'"
+          class="counter-circle fw-bold ms-2 align-self-center bg-white rounded-circle text-dark">{{
+          counter
+          |
+          async}}</span>
+      </p>
+    </a>
+  </div>
+</mat-toolbar>

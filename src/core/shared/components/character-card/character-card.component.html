@@ -1,0 +1,21 @@
+<mat-card class="char-card h-100 mb-2" horizontal="false" interactive="false">
+    <img mat-card-image [src]="character.image" [alt]="character.name" />
+    <div *ngIf="showFav" [class.favorited]="isFavorited"
+        class="position-absolute top-0 end-0 d-flex justify-content-center align-items-center favorite-content">
+        <button class="btn btn-link p-0" (click)="handleFavorite()">
+            <mat-icon [class.text-white]="!isFavorited" [class.text-black]="isFavorited" class="favorite">{{ iconName
+                }}</mat-icon>
+        </button>
+    </div>
+    <mat-card-header>
+        <mat-card-title>
+            <button class="btn btn-link text-decoration-none p-0 text-start" (click)="navigateToDetails()">
+                <h2 class="card-title name">{{character.name}}</h2>
+            </button>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="species">{{character.species}}</p>
+        <p *ngIf="character.type" class="type">{{character.type}}</p>
+    </mat-card-content>
+</mat-card>

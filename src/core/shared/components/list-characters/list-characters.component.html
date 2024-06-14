@@ -1,0 +1,4 @@
+<div class="list-content mx-auto d-flex align-items-stretch mt-4 flex-wrap">
+    <app-character-card [showFav]="showFav" class="mb-2 mx-2" *ngFor="let character of characters"
+        [character]="character" [isFavorited]="isFavorited(character)"></app-character-card>
+</div>

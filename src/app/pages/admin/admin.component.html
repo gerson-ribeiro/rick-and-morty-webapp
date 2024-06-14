@@ -1,0 +1,24 @@
+<div class="w-100 d-flex flex-column justify-content-center">
+    <h1 class="page-title text-center">Metricas</h1>
+    <div class="p-3 mt-3 bg-white w-75 mx-auto">
+        <h2 class="text-dark card-title">Quantidade de Eventos Disparados</h2>
+        <ngx-charts-bar-vertical-stacked [view]="view" [results]="results" [gradient]="gradient" [xAxis]="showXAxis"
+            [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical-stacked>
+    </div>
+    <div class="p-3 mt-3 bg-white w-75 mx-auto">
+        <h2 class="text-dark card-title">Quantidade de Filtros Realizados</h2>
+        <ngx-charts-bar-vertical-stacked [view]="view" [results]="results_filtros" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical-stacked>
+    </div>
+    <div class="p-3 mt-3 bg-white w-75 mx-auto">
+        <h2 class="text-dark card-title">Quantidade de Cards Acessados</h2>
+        <ngx-charts-bar-vertical-stacked [view]="view" [results]="results_cards" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical-stacked>
+    </div>
+</div>
