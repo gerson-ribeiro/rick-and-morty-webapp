@@ -1,27 +1,43 @@
-# MottuFeChallange
+# Rick and Morty Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
+Esta é uma aplicação web desenvolvida em Angular que consome a API da série Rick and Morty. A aplicação permite aos usuários visualizar todos os personagens da série, pesquisar personagens específicos e ver detalhes dos personagens, incluindo os episódios em que aparecem. Além disso, há uma página de admin com gráficos de informações geradas pelo aplicativo.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Página Inicial**: Exibe todos os personagens da série Rick and Morty.
+- **Pesquisa de Personagens**: Permite pesquisar personagens específicos pelo nome.
+- **Detalhes do Personagem**: Ao clicar em "Ver Detalhes", você pode visualizar informações detalhadas sobre o personagem e os episódios em que ele aparece.
+- **Página de Admin (Easter Egg)**: Contém gráficos que mostram:
+  - Quantidade de eventos realizados no app
+  - Personagens procurados
+  - Cards acessados
+  - Personagens favoritados
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**: Angular
+- **API**: [Rick and Morty API](https://rickandmortyapi.com/)
+- **RxJS**;
+- **NgRx**;
+- **Angular Material**;
+- **Bootstrap**;
 
-## Build
+## Instalação e Execução
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Após clonar o repo, instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Inicie a aplicação:
 
-## Running unit tests
+   ```bash
+   ng serve
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Abra seu navegador e acesse:
 
-## Running end-to-end tests
+   ```
+   http://localhost:4200
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. Enjoy
