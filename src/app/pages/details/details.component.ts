@@ -50,7 +50,6 @@ export class DetailsComponent implements OnInit {
   }
   public onEpisodesClick() {
     this.loading_episodes = true;
-    console.log('clicked');
 
     this._clientApi.find_episodes(this.episode_ids).subscribe((epi) => {
       if (Array.isArray(epi)) {

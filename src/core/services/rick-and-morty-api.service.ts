@@ -6,6 +6,8 @@ import {
   Observable,
   ObservableInput,
   catchError,
+  lastValueFrom,
+  map,
   of,
   retry,
   throwError,
@@ -16,6 +18,7 @@ import IEpisode from '../entities/episodes';
   providedIn: 'root',
 })
 export class RickAndMortyApiService {
+  private _next: string = '';
   private _endpoint: { episode: string; character: string } = {
     episode: 'episode',
     character: 'character',
@@ -44,6 +47,22 @@ export class RickAndMortyApiService {
       : this._url + this._endpoint.character;
     return this._client
       .get<ApiResponse>(path)
+      .pipe((apiResp) => {
+        lastValueFrom(apiResp).then((api) => (this._next = api.info.next));
+        return apiResp;
+      })
+      .pipe(retry(3), catchError(this._handleError));
+  }
+
+  public get_next(filters?: string): Observable<ApiResponse> {
+    const path = filters ? this._next + '&name=' + filters : this._next;
+
+    return this._client
+      .get<ApiResponse>(path)
+      .pipe((apiResp) => {
+        apiResp.subscribe((api) => (this._next = api.info.next));
+        return apiResp;
+      })
       .pipe(retry(3), catchError(this._handleError));
   }
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +9,7 @@ import ICharacter from '../../../core/entities/characters';
 import { RickAndMortyApiService } from '../../../core/services/rick-and-morty-api.service';
 import { FavoriteListService } from '../../../core/services/favorite-list.service';
 import { MetricsService } from '../../../core/services/metrics.service';
+import { ApiResponse } from '../../../core/entities/apiResponse';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   public characters: ICharacter[] = [];
   public favoriteds: ICharacter[] = [];
   public loading: boolean = false;
+  public next_loading: boolean = false;
 
   constructor(
     public _clientService: RickAndMortyApiService,
@@ -45,6 +47,7 @@ export class HomeComponent implements OnInit {
     if (event != '') {
       this._metricsService.sendFilterEvent(event);
     }
+    this.search = event;
 
     this._clientService.get_characters(event).subscribe((apiResp) => {
       this.characters = apiResp.results;
@@ -53,5 +56,22 @@ export class HomeComponent implements OnInit {
       });
       this.loading = false;
     });
+  }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    let pos =
+      (document.documentElement.scrollTop || document.body.scrollTop) +
+      document.documentElement.offsetHeight;
+    let max = document.documentElement.scrollHeight;
+    if (pos + 10 === max || pos === max) {
+      this.next_loading = true;
+      this._clientService.get_next(this.search).subscribe((apiResp) => {
+        this.characters = [...this.characters, ...apiResp.results];
+        this._favoriteService.getFavorites().subscribe((char) => {
+          this.favoriteds = char;
+        });
+        this.next_loading = false;
+      });
+    }
   }
 }

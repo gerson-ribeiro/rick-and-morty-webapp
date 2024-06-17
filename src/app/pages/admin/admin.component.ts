@@ -83,7 +83,6 @@ export class AdminComponent implements OnInit {
         ],
       })
     );
-    console.log(cardAccessedEvents);
     this.loading = false;
   }
 }
