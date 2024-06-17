@@ -41,3 +41,7 @@ Esta é uma aplicação web desenvolvida em Angular que consome a API da série 
    ```
 
 4. Enjoy
+
+## Acesso ao webapp publicado
+
+[Clique Aqui](https://rickandmorty-challange-gerson.000webhostapp.com/) para visitar o webapp
